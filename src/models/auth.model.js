@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../database/database');
-const Content = require('./content.model');
 
-const Person = db.define("person", {
+const Users = db.define("users", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -11,20 +10,12 @@ const Person = db.define("person", {
   name: {
     type: Sequelize.STRING,
   },
-  image: {
+  email: {
     type: Sequelize.STRING,
   },
-  age: {
-    type: Sequelize.INTEGER,
-  },
-  weight: {
+  password: {
     type: Sequelize.STRING,
   },
-  history: {
-    type: Sequelize.STRING
-  }
 });
 
-Person.Content = Person.belongsTo(Content);
-
-module.exports = Person;
+module.exports = Users;
