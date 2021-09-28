@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "3069c5ff-b1bc-4d80-9e88-02b4657241af",
+		"name": "DISNEY-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth Service",
+			"item": [
+				{
+					"name": "[Register]-Crear nuevo usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"email\": \"test@test.com\",\n    \"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/register",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "### Crear nuevo usuario\n-Petición para crear un nuevo usuario dentro del sistema."
+					},
+					"response": []
+				},
+				{
+					"name": "[Login]-Inciar sesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/auth/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "### Iniciar sesión con usuario\n- Petición para iniciar sesión dentro del sistema"
+					},
+					"response": []
+				}
+			],
+			"description": "- Servio de consultas para registrar o loguear a un nuevo usuario."
+		},
+		{
+			"name": "Persons Service",
+			"item": [
+				{
+					"name": "[Characters]-Obtener personajes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/characters",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"characters"
+							]
+						},
+						"description": "### Obtener y buscar personajes\n- Obtener todos los personajes y mostrar su nombre e imagen en la respuesta.\n- Obtener personajes en base a la búsqueda por filtración en la consulta.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Persons]-Obtener todos los personajes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/persons",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"persons"
+							]
+						},
+						"description": "### Obtener todos los personajes\n- Consulta para obtener a todos los personajes.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Persons]-Crear personaje",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"image\": \"www.google.com\",\n    \"age\": \"30\",\n    \"weight\": \"59\",\n    \"history\": \"New person\",\n    \"contentId\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/persons",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"persons"
+							]
+						},
+						"description": "### Crear nuevo personaje\n- Petición para crear un nuevo personaje.\n- La propiedad ContendId puede reemplazarse por un contenido si se encuentra creado.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Persons]-Actualizar personaje",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe2\",\n    \"image\": \"www.google.com\",\n    \"age\": \"32\",\n    \"weight\": \"65\",\n    \"history\": \"New person2\",\n    \"contentId\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/persons/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"persons",
+								"1"
+							]
+						},
+						"description": "### Actualizar un personaje\n- Petición para actualizar propiedades de un personaje.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Persons]-Eliminar un personaje",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/persons/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"persons",
+								"1"
+							]
+						},
+						"description": "### Eliminar un personaje\n- Petición para eliminar un personaje.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				}
+			],
+			"description": "- Servicio de consultas para el servicio de personajes."
+		},
+		{
+			"name": "Content Service",
+			"item": [
+				{
+					"name": "[Movies]-Obtener peliculas o series",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/movies",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							]
+						},
+						"description": "### Obtener películas o series\n- Obtener todos las películas o series y mostrar su titulo, imagen y fecha de creación en la respuesta.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Content]-Crear pelicula o serie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Lorem ipsum\",\n    \"image\": \"www.google.com\",\n    \"qualification\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/content",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"content"
+							]
+						},
+						"description": "### Crear nueva película o serie\n- Petición para crear un nuevo película o serie.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Content]-Actualizar película o serie",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Lorem ipsum, lorem\",\n    \"image\": \"www.google.com\",\n    \"qualification\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/v1/content/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"content",
+								"1"
+							]
+						},
+						"description": "### Actualizar una película o serie\n- Petición para actualizar propiedades de una película o serie.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				},
+				{
+					"name": "[Persons]-Eliminar película o serie",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/v1/content/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"content",
+								"1"
+							]
+						},
+						"description": "### Eliminar una película o serie\n- Petición para eliminar una película o serie.\n- Para realizar la consulta se debe previamente haber iniciado sesión para obtener el token y mandarlo por los headers."
+					},
+					"response": []
+				}
+			],
+			"description": "- Servicio de consultas para las películas o series"
+		}
+	]
+}
