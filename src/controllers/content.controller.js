@@ -1,7 +1,7 @@
 const Content = require("../models/content.model");
 
 module.exports = {
-  async getMovies(req, res){
+  async getMovies(req, res) {
     const movies = await Content.findAll({});
     const data = movies.map(x => {
       return {

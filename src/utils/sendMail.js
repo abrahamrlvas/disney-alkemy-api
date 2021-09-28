@@ -15,7 +15,7 @@ async function main(email) {
     from: 'Abraham Rivas',
     to: email,
     subject: "Hello ✔",
-    html: "<b>Bienvenido al sistema de Disney</b>", 
+    html: "<b>Bienvenido al sistema de Disney</b>",
   });
 }
 module.exports = main;
